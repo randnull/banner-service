@@ -192,7 +192,7 @@ func (handler *BannerHandlers) GetBanner(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	use_last_revision, err := strconv.ParseBool(query_params.Get("use_last_version"))
+	use_last_revision, err := strconv.ParseBool(query_params.Get("use_last_revision"))
 
 	if err != nil {
 		use_last_revision = false
