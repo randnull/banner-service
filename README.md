@@ -60,3 +60,10 @@ curl --location 'http://127.0.0.1:6050/banner' \
   "is_actitve": true
 }'
 ```
+
+Получение баннера 
+
+```
+curl --location 'http://127.0.0.1:6050/user_banner?tag_id=2&feature_id=1' \
+--header 'token: eyJhbGciOi5cCI6IkpXVCJ9.eyJ19I6dHJ1ZX0.xDifpQs4afRltnMJW9'
+```
