@@ -1,0 +1,51 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet author="k.goryunov" id="create-banner-table">
+        <createTable tableName="banners">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="banner_pkey"/>
+            </column>
+
+            <column name="tags_ids" type="INTEGER[]" remarks="tags ids">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="feature_id" type="INTEGER" remarks="feature id">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="title" type="VARCHAR" remarks="banner title">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="text" type="VARCHAR" remarks="banner text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="url" type="VARCHAR" remarks="banner url">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="is_active" type="BOOL" remarks="is banner active">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_datetime" type="TIMESTAMPTZ" remarks="create timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="update_datetime" type="TIMESTAMPTZ" remarks="update timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

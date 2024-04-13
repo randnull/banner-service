@@ -1,0 +1,51 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=banners
+    networks:
+      - banner-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  migrations:
+    image: liquibase/liquibase:4.19.0
+    volumes:
+      - ./migrations:/app
+    command: --defaultsFile=/app/dev.properties update
+    networks:
+      - banner-network
+    depends_on:
+      - postgresql
+  banner-service:
+    container_name: "banner-service"
+    build: 
+      context: ./
+      dockerfile: ./internal/Dockerfile
+    ports:
+      - "6050:6050"
+    depends_on:
+      - postgresql
+    networks:
+      - banner-network
+    environment:
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_HOST: "postgresql"
+      DB_NAME: "banners"
+      DB_PORT: 5432
+      PORT: 6050
+      JWT_SECRET: "secret"
+
+networks:
+  banner-network:
+    name: "banner-network"
