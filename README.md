@@ -61,9 +61,18 @@ curl --location 'http://127.0.0.1:6050/banner' \
 }'
 ```
 
-Получение баннера 
+Получение баннера (в качестве токена указать тот, что получен при /login)
 
 ```
 curl --location 'http://127.0.0.1:6050/user_banner?tag_id=2&feature_id=1' \
 --header 'token: eyJhbGciOi5cCI6IkpXVCJ9.eyJ19I6dHJ1ZX0.xDifpQs4afRltnMJW9'
 ```
+
+
+Получение всех баннеров (в качестве токена указать тот, что получен при /login)
+
+```
+curl --location 'http://127.0.0.1:6050/banner?limit=1&feature_id=1' \
+--header 'token: eyJhbGciOi5cCI6IkpXVCJ9.eyJ19I6dHJ1ZX0.xDifpQs4afRltnMJW9'
+```
+
