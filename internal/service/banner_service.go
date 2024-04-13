@@ -36,10 +36,12 @@ func (service *BannerService) CreateBanner(banner *models.Banner) (int, error) {
 		return -1, err
 	}
 
-	for _, tag_id := range banner.TagIds {
-		str_cache := fmt.Sprintf("tag_id%vfeat_id%v", tag_id, banner.FeatureId)
+	if banner.IsActive {
+		for _, tag_id := range banner.TagIds {
+			str_cache := fmt.Sprintf("tag_id%vfeat_id%v", tag_id, banner.FeatureId)
 
-		service.c.Set(str_cache, &banner.Content, cache.DefaultExpiration)
+			service.c.Set(str_cache, &banner.Content, cache.DefaultExpiration)
+		}
 	}
 
 	return id, nil
