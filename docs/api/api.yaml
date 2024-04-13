@@ -3,6 +3,68 @@ info:
   title: Сервис баннеров
   version: 1.0.0
 paths:
+  /login:
+    post:
+      summary: Вход пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Успешно
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /register/user:
+    post:
+      summary: Регистрация пользователя
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string
+      responses:
+        '201':
+          description: Пользователь зарегистрирован
+        '400':
+          description: Username занят
+  /register/admin:
+    post:
+      summary: Регистрация администратора
+      requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  password:
+                    type: string
+      responses:
+        '201':
+          description: Администратор зарегистрирован
+        '400':
+          description: Username занят
   /user_banner:
     get:
       summary: Получение баннера для пользователя
