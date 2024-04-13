@@ -8,6 +8,9 @@
 
 ## Регистрация
 
+Все запросы для работы с регистрацией соответвуют приглаемому [API](https://github.com/randnull/banner-service/blob/main/docs/api/api.yaml) (возможна отправка через Postman), например:
+
+
 Пользователь
 
 ```
@@ -40,6 +43,8 @@ curl --location 'http://127.0.0.1:6050/login' \
     "password": "password"
 }'
 ```
+
+## Работа с баннерами
 
 Все запросы для работы с баннером соответвуют приглаемому [API](https://github.com/randnull/banner-service/blob/main/docs/api/api.yaml) (возможна отправка через Postman), например:
 
